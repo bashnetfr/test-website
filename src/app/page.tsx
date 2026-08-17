@@ -80,14 +80,14 @@ export default function HomePage() {
 
   useEffect(() => {
     async function fetchData() {
-      const { data: products } = await supabase
+      const { data: products } = await supabase()
         .from("products")
         .select("*, category:categories(*)")
         .eq("featured", true)
         .limit(4);
       if (products) setFeaturedRobots(products);
 
-      const { data: cats } = await supabase.from("categories").select("*");
+      const { data: cats } = await supabase().from("categories").select("*");
       if (cats) setCategories(cats);
     }
     fetchData();

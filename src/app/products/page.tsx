@@ -34,7 +34,7 @@ function ProductsContent() {
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const { data: cats } = await supabase.from("categories").select("*");
+      const { data: cats } = await supabase().from("categories").select("*");
       if (cats) setCategories(cats);
 
       const { data: prods } = await supabase
